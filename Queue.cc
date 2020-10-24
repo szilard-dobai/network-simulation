@@ -40,8 +40,7 @@ void Queue::initialize() {
 }
 
 void Queue::handleMessage(cMessage *msg) {
-    if (opp_strcmp(msg->getSenderGate()->getName(), "inGenerator") == 0) {
-        EV << "RECEIVED MESSAGE FROM generator!\n";
+    if (opp_strcmp(msg->getArrivalGate()->getName(), "inGenerator") == 0) {
         queue.insert(msg);
     } else {
         EV << "RECEIVED MESSAGE FROM scheduler!\n";
@@ -55,4 +54,3 @@ void Queue::handleMessage(cMessage *msg) {
         }
     }
 }
-

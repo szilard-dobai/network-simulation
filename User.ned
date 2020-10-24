@@ -1,3 +1,7 @@
+//
+// Network node, generates and holds messages in
+// buffer until told to send.
+//
 module User
 {
     parameters:

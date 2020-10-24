@@ -1,15 +1,24 @@
 network Network
 {
-    @display("bgb=612,281");
+    parameters:
+        int usersCount;
+        @display("bgb=612,281");
     submodules:
-        user: User {
+        scheduler: Scheduler {
             parameters:
-                @display("p=293,61");
+                @display("p=150,168");
+        }
+        user[usersCount]: User {
+            parameters:
+                @display("p=290,61");
         }
         sink: Sink {
             parameters:
-                @display("p=436,168");
+                @display("p=440,168");
         }
     connections:
-			user.out --> sink.in;
+        for i=0..usersCount-1 {
+            scheduler.out++ --> user[i].in;
+            user[i].out --> sink.in++;
+        }
 }
