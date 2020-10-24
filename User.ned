@@ -1,24 +1,21 @@
-network User
+module User
 {
+    parameters:
+        @display("i=block/user");
+    gates:
+        input in;
+        output out;
     submodules:
-        gen1: Source {
+        gen: Source {
             parameters:
-                @display("p=69,174");
-        }
-        gen2: Source {
-            parameters:
-                @display("p=69,44");
-        }
-        sink: Sink {
-            parameters:
-                @display("p=329,100");
+                @display("p=103,61");
         }
         queue: Queue {
             parameters:
-                @display("p=165,100");
+                @display("p=103,138");
         }
     connections:
-        gen1.out --> queue.in1;
-        gen2.out --> queue.in2;
-        queue.out --> sink.in;
+        gen.out --> queue.inGenerator;
+        in --> queue.inScheduler;
+        queue.out --> out;
 }

@@ -5,9 +5,9 @@
 simple Queue
 {
     parameters:
-        @display("i=block/source");
+        @display("i=block/queue");
     gates:
-        input in1;
-        input in2;
+        input inGenerator;
+        input inScheduler;
         output out;
 }

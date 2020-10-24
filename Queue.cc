@@ -40,11 +40,11 @@ void Queue::initialize() {
 }
 
 void Queue::handleMessage(cMessage *msg) {
-    if (opp_strcmp(msg->getSenderModule()->getName(), "gen1") == 0) {
-        EV << "RECEIVED MESSAGE FROM gen1!\n";
+    if (opp_strcmp(msg->getSenderGate()->getName(), "inGenerator") == 0) {
+        EV << "RECEIVED MESSAGE FROM generator!\n";
         queue.insert(msg);
     } else {
-        EV << "RECEIVED MESSAGE FROM gen2!\n";
+        EV << "RECEIVED MESSAGE FROM scheduler!\n";
         int numberOfDataPackets = std::stoi(msg->getName());
         for (int counter = 0; counter < numberOfDataPackets; counter++) {
             EV << "SENDING MESSAGE " << counter << " FROM QUEUE\n";
