@@ -9,5 +9,6 @@ simple Queue
     gates:
         input inGenerator;
         input inScheduler;
-        output out;
+        output outScheduler;
+        output outSink;
 }

@@ -18,7 +18,8 @@ network Network
         }
     connections:
         for i=0..usersCount-1 {
-            scheduler.out++ --> user[i].in;
-            user[i].out --> sink.in++;
+            scheduler.out++ --> user[i].inScheduler;
+            scheduler.in++ <-- user[i].outScheduler;
+            user[i].outSink --> sink.in++;
         }
 }

@@ -6,6 +6,8 @@ simple Scheduler
 {
     parameters:
         @display("i=block/dispatch");
+        double generateInterval @unit(s);
     gates:
         output out[];
+        input in[];
 }

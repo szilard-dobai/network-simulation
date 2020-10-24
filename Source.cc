@@ -11,11 +11,14 @@ using namespace omnetpp;
 
 class Source: public cSimpleModule {
 private:
+    int counter = 0;
+    int startingMessage;
     cMessage *sendMessageEvent;
 
 protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    cMessage* createMessage();
 };
 
 Define_Module(Source);
@@ -23,16 +26,26 @@ Define_Module(Source);
 void Source::initialize() {
     sendMessageEvent = new cMessage("sendMessageEvent");
     scheduleAt(simTime() + par("generateInterval"), sendMessageEvent);
-    EV << "Initialized generator.\n";
+    startingMessage = par("startingMessage").intValue();
+}
+
+cMessage* Source::createMessage() {
+    int messageText = startingMessage + counter;
+    std::string s = std::to_string(messageText);
+    char const *messageTextString = s.c_str();
+    counter++;
+
+    EV << messageTextString << endl;
+
+    return new cMessage(messageTextString);
 }
 
 void Source::handleMessage(cMessage *msg) {
     ASSERT(msg == sendMessageEvent);
 
-    cMessage *job = new cMessage("2");
+    cMessage *job = createMessage();
     send(job, "out");
     double generateDelay = par("generateInterval");
-    EV << "Sent job with delay " << generateDelay << "\n";
 
     scheduleAt(simTime() + generateDelay, sendMessageEvent);
 }

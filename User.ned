@@ -7,8 +7,9 @@ module User
     parameters:
         @display("i=block/user");
     gates:
-        input in;
-        output out;
+        input inScheduler;
+        output outScheduler;
+        output outSink;
     submodules:
         gen: Source {
             parameters:
@@ -20,6 +21,7 @@ module User
         }
     connections:
         gen.out --> queue.inGenerator;
-        in --> queue.inScheduler;
-        queue.out --> out;
+        inScheduler --> queue.inScheduler;
+        queue.outScheduler --> outScheduler;
+        queue.outSink --> outSink;
 }

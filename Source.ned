@@ -5,6 +5,7 @@
 simple Source
 {
     parameters:
+        int startingMessage;
         double generateInterval @unit(s);
         @display("i=block/source");
     gates:
