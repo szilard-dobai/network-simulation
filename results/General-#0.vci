@@ -1,0 +1,26 @@
+file 298420 1603565796                                          
+version 2
+run General-0-20201024-21:11:03-9616
+attr configname General
+attr datetime 20201024-21:11:03
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network User
+attr processid 9616
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.gen1.generateInterval 1s
+param **.gen2.generateInterval 10s
+
+vector 0 User.sink lifetime:vector ETV
+attr interpolationmode none
+attr title "lifetime of arrived jobs, vector"
+attr unit s
+0	566 297852 23 170232 10 70930 14186 8 56745 402549029 15229369071781
+
