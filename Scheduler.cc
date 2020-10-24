@@ -20,6 +20,7 @@ private:
 protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    void scheduleMessages();
 };
 
 Define_Module(Scheduler);
@@ -36,10 +37,22 @@ void Scheduler::handleMessage(cMessage *msg) {
 
         double generateDelay = par("generateInterval");
 
-        // call scheduling algorithm
+        scheduleMessages();
 
         scheduleAt(simTime() + generateDelay, sendMessageEvent);
     } else {
-        queueLength[msg->getArrivalGate()->getIndex()] = std::stoi(msg->getName());
+        queueLength[msg->getArrivalGate()->getIndex()] = std::stoi(
+                msg->getName());
+    }
+}
+
+void Scheduler::scheduleMessages() {
+    if (queueLength[0] == 5) {
+        send(new cMessage("5"), "out", 0);
+        EV << "USER 0 MAY SEND 5 MESSAGES." << endl;
+    }
+    if (queueLength[1] == 3) {
+        send(new cMessage("3"), "out", 1);
+        EV << "USER 1 MAY SEND 3 MESSAGES." << endl;
     }
 }

@@ -57,7 +57,6 @@ void Queue::handleMessage(cMessage *msg) {
         //EV << "RECEIVED MESSAGE FROM scheduler!\n";
         int numberOfDataPackets = std::stoi(msg->getName());
         for (int counter = 0; counter < numberOfDataPackets; counter++) {
-            EV << "SENDING MESSAGE " << counter << " FROM QUEUE\n";
             if (!queue.isEmpty()) {
                 msgFromQueue = (cMessage*) queue.pop();
                 send(msgFromQueue, "outSink");

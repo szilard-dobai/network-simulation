@@ -1,4 +1,3 @@
-file 980 1603578953                                             
 version 2
 run General-0-20201025-01:35:14-9044
 attr configname General
@@ -30,5 +29,12 @@ vector 0 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-0	898 80 34 47 6 7 8 1 5 24 90
+0	34	6	5
+0	35	6	4
+0	36	6	3
+0	37	6	2
+0	38	6	1
+0	45	7	5
+0	46	7	3
+0	47	7	1
 

@@ -35,8 +35,6 @@ cMessage* Source::createMessage() {
     char const *messageTextString = s.c_str();
     counter++;
 
-    EV << messageTextString << endl;
-
     return new cMessage(messageTextString);
 }
 
