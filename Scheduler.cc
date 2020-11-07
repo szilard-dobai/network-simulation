@@ -20,6 +20,7 @@ private:
 protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    void askForQueueLengths();
     void scheduleMessages();
 };
 
@@ -37,12 +38,20 @@ void Scheduler::handleMessage(cMessage *msg) {
 
         double generateDelay = par("generateInterval");
 
+        askForQueueLengths();
+        // run sch alg
         scheduleMessages();
 
         scheduleAt(simTime() + generateDelay, sendMessageEvent);
     } else {
         queueLength[msg->getArrivalGate()->getIndex()] = std::stoi(
                 msg->getName());
+    }
+}
+
+void Scheduler::askForQueueLengths() {
+    for (int counter = 0; counter < gateSize("out"); counter++) {
+        send(new cMessage("-1"), "out", counter);
     }
 }
 

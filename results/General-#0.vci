@@ -1,15 +1,15 @@
-file 980 1603578953                                             
+file 567801 1604336500                                          
 version 2
-run General-0-20201025-01:35:14-9044
+run General-0-20201102-18:59:15-17644
 attr configname General
-attr datetime 20201025-01:35:14
+attr datetime 20201102-18:59:15
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 9044
+attr processid 17644
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -30,5 +30,6 @@ vector 0 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-0	898 80 34 47 6 7 8 1 5 24 90
+0	900 551653 34 168943 6 21847 32768 1 5 98304 367730
+0	552553 15246 168968 173306 21851 22411 847 1 5 2541 9505
 

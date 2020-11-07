@@ -51,17 +51,19 @@ void Queue::handleMessage(cMessage *msg) {
     if (opp_strcmp(msg->getArrivalGate()->getName(), "inGenerator") == 0) {
         //EV << "Received message: " << msg->getName() << endl;
         queue.insert(msg);
-        send(new cMessage(intToString(queue.getLength())), "outScheduler");
-
     } else {
         //EV << "RECEIVED MESSAGE FROM scheduler!\n";
-        int numberOfDataPackets = std::stoi(msg->getName());
-        for (int counter = 0; counter < numberOfDataPackets; counter++) {
-            if (!queue.isEmpty()) {
-                msgFromQueue = (cMessage*) queue.pop();
-                send(msgFromQueue, "outSink");
+        int messageFromScheduler = std::stoi(msg->getName());
+        if (messageFromScheduler == -1) {
+            send(new cMessage(intToString(queue.getLength())), "outScheduler");
+        } else {
+            for (int counter = 0; counter < messageFromScheduler; counter++) {
+                if (!queue.isEmpty()) {
+                    msgFromQueue = (cMessage*) queue.pop();
+                    send(msgFromQueue, "outSink");
+                }
             }
+            send(new cMessage(intToString(queue.getLength())), "outScheduler");
         }
-        send(new cMessage(intToString(queue.getLength())), "outScheduler");
     }
 }
