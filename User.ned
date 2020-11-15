@@ -5,6 +5,7 @@
 module User
 {
     parameters:
+        int radioLinkQuality;
         @display("i=block/user");
     gates:
         input inScheduler;

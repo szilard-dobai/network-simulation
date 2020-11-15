@@ -63,7 +63,6 @@ void Queue::handleMessage(cMessage *msg) {
                     send(msgFromQueue, "outSink");
                 }
             }
-            send(new cMessage(intToString(queue.getLength())), "outScheduler");
         }
     }
 }
