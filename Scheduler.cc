@@ -25,6 +25,7 @@ private:
     int *radioLinkQuality;
     int *timeSinceLastServed;
     int responseReceivedCounter = 0;
+    int lastUserServed = 0;
 //    int timeSinceLastServed[gateSize("out")];
 //    int userWeight[];
 
@@ -32,7 +33,8 @@ protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
     void askForQueueLengths();
-    int* runPFAlgo();
+    int runPFAlgo();
+    int runWRRAlgo();
     void scheduleMessages();
     const char* intToString(int num);
 };
@@ -75,7 +77,12 @@ void Scheduler::handleMessage(cMessage *msg) {
         responseReceivedCounter++;
         if (responseReceivedCounter == (int) getAncestorPar("usersCount")) {
             responseReceivedCounter = 0;
-            runPFAlgo();
+
+            if (getAncestorPar("algorithm").stdstringValue().compare(
+                    std::string("pf")) == 0)
+                runPFAlgo();
+            else
+                runWRRAlgo();
         }
     }
 }
@@ -93,28 +100,21 @@ void Scheduler::askForQueueLengths() {
     }
 }
 
-int* Scheduler::runPFAlgo() {
+int Scheduler::runPFAlgo() {
     int usersCount = (int) getAncestorPar("usersCount");
     map userList[usersCount], aux;
     int freeChannels = (int) getAncestorPar("channelsCount"), servedAmount = 0;
 
     int i = 0, j = 0;
-
     for (i = 0; i < usersCount; i++) {
         userList[i].index = i;
         userList[i].weight = 0;
     }
 
-    for (i = 0; i < usersCount; i++)
-        {
+    for (i = 0; i < usersCount; i++) {
         userList[i].weight = radioLinkQuality[i] * timeSinceLastServed[i];
-        EV << "WEIGHT = "<<  userList[i].weight << "\n";
-        }
+    }
 
-//    printf ("\n\n");
-//    for (i = 0; i < n; i++)
-//      printf ("Computed weight of %d is %d.\n", i + 1, userList[i].weight);
-//
     for (i = 0; i < usersCount - 1; i++)
         for (j = i; j < usersCount; j++)
             if (userList[i].weight <= userList[j].weight) {
@@ -123,32 +123,75 @@ int* Scheduler::runPFAlgo() {
                 userList[j] = aux;
             }
 
-
-
     for (i = 0; i < usersCount; i++) {
-        servedAmount = min(userList[i].weight, queueLength[userList[i].index]);
+        servedAmount = min(userList[i].weight, queueLength[userList[i].index])
+        ;
         if (freeChannels == 0) {
             timeSinceLastServed[userList[i].index]++;
         } else {
             if (freeChannels >= servedAmount) {
                 send(new cMessage(intToString(servedAmount)), "out",
                         userList[i].index);
-//                EV << "USER " << userList[i].index + 1 << " SEND "
-//                          << servedAmount << " MESSAGES.\n";
+                EV << "USER " << userList[i].index + 1 << " MAY SEND "
+                          << servedAmount << " MESSAGES.\n";
                 timeSinceLastServed[userList[i].index] = 1;
                 freeChannels -= servedAmount;
             } else {
 
                 send(new cMessage(intToString(servedAmount)), "out",
                         userList[i].index);
-//                EV << "USER " << userList[i].index + 1 << " SEND "
-//                          << servedAmount << " MESSAGES.\n";
+                EV << "USER " << userList[i].index + 1 << " MAY SEND "
+                          << servedAmount << " MESSAGES.\n";
                 timeSinceLastServed[userList[i].index] = 1;
                 freeChannels -= freeChannels;
             }
 
         }
     }
+    return 0;
+}
+
+int Scheduler::runWRRAlgo() {
+    int usersCount = (int) getAncestorPar("usersCount");
+    int freeChannels = (int) getAncestorPar("channelsCount"),
+            intendedServedAmount = 0, actualServedAmount = 0, emptyQueues = 0;
+
+    int i = 0, j = 0;
+
+    for (i = lastUserServed; i <= usersCount; i++) {
+        if (i == usersCount) {
+            lastUserServed = 0;
+            i = 0;
+        }
+
+        for (j = 0; j < usersCount; j++)
+            if (queueLength[j] == 0)
+                emptyQueues++;
+        if (emptyQueues == usersCount) {
+            break;
+        } else {
+            emptyQueues = 0;
+        }
+
+        if (freeChannels == 0) {
+            break;
+        } else {
+            intendedServedAmount = min(radioLinkQuality[i], queueLength[i])
+            ;
+            actualServedAmount = min(intendedServedAmount, freeChannels)
+            ;
+
+            if (actualServedAmount > 0) {
+                send(new cMessage(intToString(actualServedAmount)), "out", i);
+                EV << "USER " << i + 1 << " MAY SEND " << actualServedAmount
+                          << " MESSAGES.\n";
+                freeChannels -= actualServedAmount;
+                queueLength[i] -= actualServedAmount;
+            }
+        }
+
+    }
+
     return 0;
 }
 

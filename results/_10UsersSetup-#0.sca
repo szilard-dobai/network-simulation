@@ -1,0 +1,60 @@
+version 2
+run _10UsersSetup-0-20201115-19:50:14-12212
+attr configname _10UsersSetup
+attr datetime 20201115-19:50:14
+attr experiment _10UsersSetup
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 12212
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.algorithm "\"pf\""
+param **.usersCount 10
+param **.channelsCount 15
+param **.scheduler.generateInterval 10s
+param **.user[0].gen.generateInterval 1s
+param **.user[1].gen.generateInterval 2s
+param **.user[2].gen.generateInterval 1s
+param **.user[3].gen.generateInterval 3s
+param **.user[4].gen.generateInterval 1s
+param **.user[5].gen.generateInterval 4s
+param **.user[6].gen.generateInterval 2s
+param **.user[7].gen.generateInterval 2s
+param **.user[8].gen.generateInterval 6s
+param **.user[9].gen.generateInterval 8s
+param **.user[0].radioLinkQuality 5
+param **.user[1].radioLinkQuality 3
+param **.user[2].radioLinkQuality 1
+param **.user[3].radioLinkQuality 8
+param **.user[4].radioLinkQuality 10
+param **.user[5].radioLinkQuality 3
+param **.user[6].radioLinkQuality 4
+param **.user[7].radioLinkQuality 2
+param **.user[8].radioLinkQuality 2
+param **.user[9].radioLinkQuality 7
+param **.user[0].gen.startingMessage 0
+param **.user[1].gen.startingMessage 100
+param **.user[2].gen.startingMessage 200
+param **.user[3].gen.startingMessage 300
+param **.user[4].gen.startingMessage 400
+param **.user[5].gen.startingMessage 500
+param **.user[6].gen.startingMessage 600
+param **.user[7].gen.startingMessage 700
+param **.user[8].gen.startingMessage 800
+param **.user[9].gen.startingMessage 900
+
+scalar Network.sink lifetime:mean 54.156839622642
+attr interpolationmode none
+attr title "lifetime of arrived jobs, mean"
+attr unit s
+scalar Network.sink lifetime:max 226
+attr interpolationmode none
+attr title "lifetime of arrived jobs, max"
+attr unit s
+

@@ -3,6 +3,7 @@ network Network
     parameters:
         int usersCount;
         int channelsCount;
+        string algorithm;
         @display("bgb=612,281");
     submodules:
         scheduler: Scheduler {
