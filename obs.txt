@@ -1,0 +1,4 @@
+daca ii dau un numar foarte mare de canale retelei, scheduler-ul goleste de fiecare data cozile tuturor userilor dar in grafic, la unii useri nu se vede asta pentru ca de fiecare data, ultimul mesaj generat e unaccounted for de catre scheduler
+la ciclucl generatorului, se intampla ceva de genul
+	gen, gen, gen, intreaba scheduler-ul de coada, gen
+ultimele 2 mesaje (1 de la generator, 1 de la sch) ajung deodata la Queue dar intra prima data cel de la sch, apoi cel de la gen => queueLength-ul cunoscut de sch e cu 1 mai mic decat queueLengh-ul real

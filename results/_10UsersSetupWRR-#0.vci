@@ -1,0 +1,98 @@
+file 43012 1605727852                                           
+version 2
+run _10UsersSetupWRR-0-20201118-21:30:46-14152
+attr configname _10UsersSetupWRR
+attr datetime 20201118-21:30:46
+attr experiment _10UsersSetupWRR
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 14152
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.algorithm "\"wrr\""
+param **.usersCount 10
+param **.channelsCount 500
+param **.scheduler.generateInterval 5s
+param **.user[0].gen.generateInterval 1s
+param **.user[1].gen.generateInterval 2s
+param **.user[2].gen.generateInterval 1s
+param **.user[3].gen.generateInterval 3s
+param **.user[4].gen.generateInterval 1s
+param **.user[5].gen.generateInterval 4s
+param **.user[6].gen.generateInterval 2s
+param **.user[7].gen.generateInterval 2s
+param **.user[8].gen.generateInterval 6s
+param **.user[9].gen.generateInterval 8s
+param **.user[0].radioLinkQuality 5
+param **.user[1].radioLinkQuality 3
+param **.user[2].radioLinkQuality 4
+param **.user[3].radioLinkQuality 8
+param **.user[4].radioLinkQuality 10
+param **.user[5].radioLinkQuality 3
+param **.user[6].radioLinkQuality 4
+param **.user[7].radioLinkQuality 3
+param **.user[8].radioLinkQuality 2
+param **.user[9].radioLinkQuality 7
+param **.user[0].gen.startingMessage 0
+param **.user[1].gen.startingMessage 100
+param **.user[2].gen.startingMessage 200
+param **.user[3].gen.startingMessage 300
+param **.user[4].gen.startingMessage 400
+param **.user[5].gen.startingMessage 500
+param **.user[6].gen.startingMessage 600
+param **.user[7].gen.startingMessage 700
+param **.user[8].gen.startingMessage 800
+param **.user[9].gen.startingMessage 900
+
+vector 0 Network.user[0].queue "Queue before scheduler's run." ETV
+vector 1 Network.user[1].queue "Queue before scheduler's run." ETV
+vector 2 Network.user[2].queue "Queue before scheduler's run." ETV
+vector 3 Network.user[3].queue "Queue before scheduler's run." ETV
+vector 4 Network.user[4].queue "Queue before scheduler's run." ETV
+vector 5 Network.user[5].queue "Queue before scheduler's run." ETV
+vector 6 Network.user[6].queue "Queue before scheduler's run." ETV
+vector 7 Network.user[7].queue "Queue before scheduler's run." ETV
+vector 8 Network.user[8].queue "Queue before scheduler's run." ETV
+vector 9 Network.user[9].queue "Queue before scheduler's run." ETV
+vector 10 Network.user[0].queue "Queue after scheduler's run." ETV
+vector 11 Network.user[1].queue "Queue after scheduler's run." ETV
+vector 12 Network.user[2].queue "Queue after scheduler's run." ETV
+vector 13 Network.user[3].queue "Queue after scheduler's run." ETV
+vector 14 Network.user[4].queue "Queue after scheduler's run." ETV
+vector 15 Network.user[5].queue "Queue after scheduler's run." ETV
+vector 16 Network.user[6].queue "Queue after scheduler's run." ETV
+vector 17 Network.user[7].queue "Queue after scheduler's run." ETV
+vector 18 Network.sink lifetime:vector ETV
+attr interpolationmode none
+attr title "lifetime of arrived jobs, vector"
+attr unit s
+vector 19 Network.user[8].queue "Queue after scheduler's run." ETV
+vector 20 Network.user[9].queue "Queue after scheduler's run." ETV
+0	3222 796 45 6537 5 295 59 4 5 294 1466
+1	4018 796 46 6538 5 295 59 2 3 147 381
+2	4814 796 47 6539 5 295 59 4 5 294 1466
+3	5610 796 48 6540 5 295 59 1 2 98 176
+4	6406 796 49 6541 5 295 59 4 5 294 1466
+5	7202 796 50 6542 5 295 59 1 2 73 101
+6	7998 796 51 6543 5 295 59 2 3 147 381
+7	8794 796 52 6544 5 295 59 2 3 147 381
+8	9590 796 53 6545 5 295 59 0 1 49 49
+9	10386 796 54 6546 5 295 59 0 1 36 36
+10	11182 855 68 6566 5 295 59 1 1 59 59
+11	12037 855 69 6567 5 295 59 0 1 29 29
+12	12892 1699 70 6569 5 295 117 1 2 175 291
+13	14591 855 71 6560 5 295 59 0 1 19 19
+14	15446 855 72 6561 5 295 59 1 1 59 59
+15	16301 855 73 6562 5 295 59 0 1 14 14
+16	17156 855 74 6563 5 295 59 0 1 29 29
+17	18011 855 75 6564 5 295 59 0 1 29 29
+18	18866 22907 76 6597 5 295 1579 0 5 4637 16839
+19	41773 713 175 6565 10 295 49 0 0 0 0
+20	42486 524 176 6458 10 290 36 0 0 0 0
+

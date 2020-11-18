@@ -14,7 +14,7 @@ using namespace omnetpp;
  */
 class Queue: public cSimpleModule {
 private:
-    cOutVector queueLength;
+    cOutVector queueLengthBA, queueLengthAA;
 protected:
     cMessage *msgFromQueue;
     cQueue queue;
@@ -29,6 +29,8 @@ Define_Module(Queue);
 
 void Queue::initialize() {
     queue.setName("queue");
+    queueLengthBA.setName("Queue before scheduler's run.");
+    queueLengthAA.setName("Queue after scheduler's run.");
 }
 
 const char* Queue::intToString(int num) {
@@ -47,14 +49,16 @@ void Queue::handleMessage(cMessage *msg) {
         int messageFromScheduler = std::stoi(msg->getName());
         if (messageFromScheduler == -1) {
             send(new cMessage(intToString(queue.getLength())), "outScheduler");
-            queueLength.record(queue.getLength());
+            queueLengthBA.record(queue.getLength());
         } else {
             for (int counter = 0; counter < messageFromScheduler; counter++) {
+
                 if (!queue.isEmpty()) {
                     msgFromQueue = (cMessage*) queue.pop();
                     send(msgFromQueue, "outSink");
                 }
             }
+            queueLengthAA.record(queue.getLength());
         }
     }
 }
