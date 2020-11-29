@@ -12,7 +12,7 @@ The scheduler runs every **1ms** and has the task of distributing the **30 chann
 
 ## 90% network load
 
-![_3UsersSetupPF_90%_QB](./Network load 90%/_3UsersSetupPF_90%_QA.svg)
+![_3UsersSetupPF_90%_QB]("./Network load 90%/_3UsersSetupPF_90%_QA.svg")
 
 ![_3UsersSetupPF_90%_QA](./Network load 90%/_3UsersSetupPF_90%_QB.svg)
 
