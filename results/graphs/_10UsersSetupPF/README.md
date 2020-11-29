@@ -66,6 +66,8 @@ There **aren't** any free channels remaining after each scheduling cycle.
 
 The sum of the users' queue **goes up linearly**.
 
+PF would rather serve the **heavier weighted** users and let the rest **wait a cycle**.
+
 <br/>
 <br/>
 <br/>
