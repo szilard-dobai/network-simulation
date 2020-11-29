@@ -20,7 +20,11 @@ The scheduler runs every **1ms** and has the task of distributing the **30 chann
 
 ![_3UsersSetupPF_90%_TQ](./Network%20load%2090%25/_3UsersSetupPF_90%25_TQ.svg)
 
-Each user gets to send its messages. There are free channels remaining after each scheduling cycle. The sum of the users' queue lengths is 0.
+**Each** user gets to send its messages. 
+
+There **are** free channels remaining after each scheduling cycle. 
+
+The sum of the users' queue lengths is **0**.
 
 <br/>
 <br/>
@@ -36,7 +40,11 @@ Each user gets to send its messages. There are free channels remaining after eac
 
 ![_3UsersSetupPF_100%_TQ](./Network%20load%20100%25/_3UsersSetupPF_100%25_TQ.svg)
 
-Each user gets to send its messages. There are barely any free channels remaining after each scheduling cycle. The sum of the users' queue lengths is 0.
+**Each** user gets to send its messages. 
+
+There **are barely** any free channels remaining after each scheduling cycle. 
+
+The sum of the users' queue lengths is **0**.
 
 <br/>
 <br/>
@@ -52,7 +60,11 @@ Each user gets to send its messages. There are barely any free channels remainin
 
 ![_3UsersSetupPF_150%_TQ](./Network%20load%20150%25/_3UsersSetupPF_150%25_TQ.svg)
 
-More "important" users (those with higher weights) get to send their messages. There aren't any free channels remaining after each scheduling cycle. The sum of the users' queue goes up linearly.
+More **"important"** users (those with higher weights) get to send their messages. 
+
+There **aren't** any free channels remaining after each scheduling cycle. 
+
+The sum of the users' queue **goes up linearly**.
 
 <br/>
 <br/>

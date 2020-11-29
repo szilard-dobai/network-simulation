@@ -1,14 +1,14 @@
 version 2
-run _10UsersSetupWRR-0-20201129-19:30:45-15944
+run _10UsersSetupWRR-0-20201129-20:07:15-24752
 attr configname _10UsersSetupWRR
-attr datetime 20201129-19:30:45
+attr datetime 20201129-20:07:15
 attr experiment _10UsersSetupWRR
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 15944
+attr processid 24752
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -17,7 +17,7 @@ attr seedset 0
 param **.algorithm "\"wrr\""
 param **.usersCount 10
 param **.channelsCount 25
-param **.networkLoad 1.5
+param **.networkLoad 0.9
 param **.scheduler.generateInterval 1ms
 param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
 param **.user[0].radioLinkQuality 1
@@ -41,11 +41,11 @@ param **.user[7].gen.startingMessage 700
 param **.user[8].gen.startingMessage 800
 param **.user[9].gen.startingMessage 900
 
-scalar Network.sink lifetime:mean 0.0077901781783505
+scalar Network.sink lifetime:mean 0.00049955033975157
 attr interpolationmode none
 attr title "lifetime of arrived jobs, mean"
 attr unit s
-scalar Network.sink lifetime:max 0.067475923331
+scalar Network.sink lifetime:max 0.00099961212
 attr interpolationmode none
 attr title "lifetime of arrived jobs, max"
 attr unit s
