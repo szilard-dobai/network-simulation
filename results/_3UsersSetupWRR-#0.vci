@@ -1,15 +1,15 @@
-file 86616 1606662694                                           
+file 104407 1606669505                                          
 version 2
-run _3UsersSetupWRR-0-20201129-17:11:29-24732
+run _3UsersSetupWRR-0-20201129-19:04:59-22844
 attr configname _3UsersSetupWRR
-attr datetime 20201129-17:11:29
+attr datetime 20201129-19:04:59
 attr experiment _3UsersSetupWRR
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 24732
+attr processid 22844
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,7 +18,7 @@ attr seedset 0
 param **.algorithm "\"wrr\""
 param **.usersCount 3
 param **.channelsCount 30
-param **.networkLoad 1.5
+param **.networkLoad 1.1
 param **.scheduler.generateInterval 1ms
 param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
 param **.user[0].radioLinkQuality 1
@@ -40,13 +40,13 @@ vector 8 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-0	1495 1254 86 9972 0.001 0.071 71 14 696 25205 11779685
-1	2749 1244 87 9973 0.001 0.071 71 14 341 12637 2901445
-2	3993 1192 88 9974 0.001 0.071 71 14 15 1039 15221
-3	5185 1121 91 9977 0.001 0.071 71 0 0 0 0
-4	6306 1258 91 9977 0.001 0.071 71 12 1022 36751 25225821
-5	7564 6497 92 9991 0.001 0.071 368 8 695 129239 60085887
-6	14061 6440 93 9992 0.001 0.071 368 4 339 63273 14267101
-7	20501 5679 94 9990 0.001 0.071 355 0 12 2026 17714
-8	26180 60434 108 10000 0.001 0.071 2108 1.229329e-006 0.046611837656 17.240422935785 0.38612765747971
+0	1495 1442 62 9940 0.001 0.083 83 10 221 9545 1413651
+1	2937 1394 63 9941 0.001 0.083 83 10 11 904 9854
+2	4331 1394 64 9942 0.001 0.083 83 10 11 891 9581
+3	5725 1311 67 9945 0.001 0.083 83 0 0 0 0
+4	7036 1434 67 9945 0.001 0.083 83 0 213 8850 1259990
+5	8470 12027 68 9963 0.001 0.083 695 0 220 76483 11070737
+6	20497 7725 69 9960 0.001 0.083 489 0 9 2030 13290
+7	28222 5244 70 9956 0.001 0.083 332 0 8 1179 7125
+8	33466 70939 87 9993 0.001 0.083 2490 2.23232e-007 0.020141400128 7.92033941895 0.093691892095212
 

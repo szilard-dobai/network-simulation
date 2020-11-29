@@ -151,7 +151,8 @@ int Scheduler::runPFAlgo() {
             }
         }
         for (i = 0; i < usersCount; i++) {
-            userList[i].weight = radioLinkQuality[i] * timeSinceLastServed[i];
+            userList[i].weight = radioLinkQuality[userList[i].index]
+                    * timeSinceLastServed[userList[i].index];
         }
         emptyQueues = 0;
         for (j = 0; j < usersCount; j++)
