@@ -1,14 +1,14 @@
 version 2
-run _10UsersSetupPF-0-20201129-16:50:06-6992
+run _10UsersSetupPF-0-20201129-19:25:44-6336
 attr configname _10UsersSetupPF
-attr datetime 20201129-16:50:06
+attr datetime 20201129-19:25:44
 attr experiment _10UsersSetupPF
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 6992
+attr processid 6336
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -17,19 +17,19 @@ attr seedset 0
 param **.algorithm "\"pf\""
 param **.usersCount 10
 param **.channelsCount 30
-param **.networkLoad 0.9
+param **.networkLoad 1.5
 param **.scheduler.generateInterval 1ms
 param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
-param **.user[0].radioLinkQuality 5
-param **.user[1].radioLinkQuality 3
-param **.user[2].radioLinkQuality 4
-param **.user[3].radioLinkQuality 8
-param **.user[4].radioLinkQuality 10
-param **.user[5].radioLinkQuality 3
-param **.user[6].radioLinkQuality 4
-param **.user[7].radioLinkQuality 3
-param **.user[8].radioLinkQuality 2
-param **.user[9].radioLinkQuality 7
+param **.user[0].radioLinkQuality 1
+param **.user[1].radioLinkQuality 2
+param **.user[2].radioLinkQuality 3
+param **.user[3].radioLinkQuality 4
+param **.user[4].radioLinkQuality 5
+param **.user[5].radioLinkQuality 6
+param **.user[6].radioLinkQuality 7
+param **.user[7].radioLinkQuality 8
+param **.user[8].radioLinkQuality 9
+param **.user[9].radioLinkQuality 10
 param **.user[0].gen.startingMessage 0
 param **.user[1].gen.startingMessage 100
 param **.user[2].gen.startingMessage 200
@@ -41,11 +41,11 @@ param **.user[7].gen.startingMessage 700
 param **.user[8].gen.startingMessage 800
 param **.user[9].gen.startingMessage 900
 
-scalar Network.sink lifetime:mean 0.00050077244670185
+scalar Network.sink lifetime:mean 0.0064524275267986
 attr interpolationmode none
 attr title "lifetime of arrived jobs, mean"
 attr unit s
-scalar Network.sink lifetime:max 0.00099982254
+scalar Network.sink lifetime:max 0.051575565568
 attr interpolationmode none
 attr title "lifetime of arrived jobs, max"
 attr unit s
