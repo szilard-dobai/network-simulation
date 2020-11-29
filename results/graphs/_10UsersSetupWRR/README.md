@@ -44,7 +44,7 @@ The sum of the users' queue lengths is **0**.
 
 There **are barely** any free channels remaining after each scheduling cycle. 
 
-The sum of the users' queue lengths is **0**.
+The sum of the users' queue lengths is **sometimes 0**.
 
 <br/>
 <br/>
