@@ -12,9 +12,9 @@ The scheduler runs every **1ms** and has the task of distributing the **30 chann
 
 ## 90% network load
 
-![_10UsersSetupPF_90%_QB](./Network%20load%2090%25/_10UsersSetupPF_90%25_QA.svg)
+![_10UsersSetupPF_90%_QB](./Network%20load%2090%25/_10UsersSetupPF_90%25_QB.svg)
 
-![_10UsersSetupPF_90%_QA](./Network%20load%2090%25/_10UsersSetupPF_90%25_QB.svg)
+![_10UsersSetupPF_90%_QA](./Network%20load%2090%25/_10UsersSetupPF_90%25_QA.svg)
 
 ![_10UsersSetupPF_90%_F](./Network%20load%2090%25/_10UsersSetupPF_90%25_F.svg)
 
@@ -32,9 +32,9 @@ The sum of the users' queue lengths is **0**.
 
 ## 100% network load
 
-![_10UsersSetupPF_100%_QB](./Network%20load%20100%25/_10UsersSetupPF_100%25_QA.svg)
+![_10UsersSetupPF_100%_QB](./Network%20load%20100%25/_10UsersSetupPF_100%25_QB.svg)
 
-![_10UsersSetupPF_100%_QA](./Network%20load%20100%25/_10UsersSetupPF_100%25_QB.svg)
+![_10UsersSetupPF_100%_QA](./Network%20load%20100%25/_10UsersSetupPF_100%25_QA.svg)
 
 ![_10UsersSetupPF_100%_F](./Network%20load%20100%25/_10UsersSetupPF_100%25_F.svg)
 
@@ -52,9 +52,9 @@ The sum of the users' queue lengths is **0**.
 
 ## 150% network load
 
-![_10UsersSetupPF_150%_QB](./Network%20load%20150%25/_10UsersSetupPF_150%25_QA.svg)
+![_10UsersSetupPF_150%_QB](./Network%20load%20150%25/_10UsersSetupPF_150%25_QB.svg)
 
-![_10UsersSetupPF_150%_QA](./Network%20load%20150%25/_10UsersSetupPF_150%25_QB.svg)
+![_10UsersSetupPF_150%_QA](./Network%20load%20150%25/_10UsersSetupPF_150%25_QA.svg)
 
 ![_10UsersSetupPF_150%_F](./Network%20load%20150%25/_10UsersSetupPF_150%25_F.svg)
 
