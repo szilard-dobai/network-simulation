@@ -66,8 +66,6 @@ There **aren't** any free channels remaining after each scheduling cycle.
 
 The sum of the users' queue **goes up linearly**.
 
-WRR makes it a point to serve **each user**, however it can.
-
 <br/>
 <br/>
 <br/>
