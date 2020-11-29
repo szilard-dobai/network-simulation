@@ -1,15 +1,15 @@
-file 86612 1606670512                                           
+file 107493 1606674688                                          
 version 2
-run _3UsersSetupWRR-0-20201129-19:21:47-216
+run _3UsersSetupWRR-0-20201129-20:31:24-24108
 attr configname _3UsersSetupWRR
-attr datetime 20201129-19:21:47
+attr datetime 20201129-20:31:24
 attr experiment _3UsersSetupWRR
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 216
+attr processid 24108
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,7 +18,7 @@ attr seedset 0
 param **.algorithm "\"wrr\""
 param **.usersCount 3
 param **.channelsCount 30
-param **.networkLoad 1.5
+param **.networkLoad 0.9
 param **.scheduler.generateInterval 1ms
 param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
 param **.user[0].radioLinkQuality 1
@@ -40,13 +40,13 @@ vector 8 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-0	1491 1254 86 9972 0.001 0.071 71 14 696 25205 11779685
-1	2745 1244 87 9973 0.001 0.071 71 14 341 12637 2901445
-2	3989 1192 88 9974 0.001 0.071 71 14 15 1039 15221
-3	5181 1121 91 9977 0.001 0.071 71 0 0 0 0
-4	6302 1258 91 9977 0.001 0.071 71 12 1022 36751 25225821
-5	7560 6497 92 9991 0.001 0.071 368 8 695 129239 60085887
-6	14057 6440 93 9992 0.001 0.071 368 4 339 63273 14267101
-7	20497 5679 94 9990 0.001 0.071 355 0 12 2026 17714
-8	26176 60434 108 10000 0.001 0.071 2108 1.229329e-006 0.046611837656 17.240422935785 0.38612765747971
+0	1495 1516 50 9912 0.001 0.096 96 8 9 859 7691
+1	3011 1516 51 9913 0.001 0.096 96 8 9 855 7623
+2	4527 1516 52 9914 0.001 0.096 96 8 9 843 7419
+3	6043 1516 55 9917 0.001 0.096 96 3 6 323 1117
+4	7559 1516 55 9917 0.001 0.096 96 0 0 0 0
+5	9075 13573 56 9934 0.001 0.096 859 0 8 3416 19264
+6	22648 7440 57 9929 0.001 0.096 471 0 7 1500 7812
+7	30088 4548 58 9925 0.001 0.096 288 0 6 822 3984
+8	34636 72855 71 9961 0.001 0.096 2557 1.075027e-006 0.00099989216 1.28372355002 0.00085732655728869
 
