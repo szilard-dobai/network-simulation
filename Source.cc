@@ -13,6 +13,7 @@ class Source: public cSimpleModule {
 private:
     int counter = 0;
     int startingMessage;
+    double intervalScaler;
     cMessage *sendMessageEvent;
 
 protected:
@@ -25,7 +26,15 @@ Define_Module(Source);
 
 void Source::initialize() {
     sendMessageEvent = new cMessage("sendMessageEvent");
-    scheduleAt(simTime() + par("generateInterval"), sendMessageEvent);
+
+    cModule *network = getParentModule()->getParentModule();
+    double networkLoad = network->par("networkLoad").doubleValue();
+    int userCount = network->par("usersCount").intValue();
+    int radioChannelCount = network->par("channelsCount").intValue();
+    intervalScaler = userCount / (radioChannelCount * networkLoad);
+
+    scheduleAt(simTime() + par("generateInterval").doubleValue() * intervalScaler,
+            sendMessageEvent);
     startingMessage = par("startingMessage").intValue();
 }
 
@@ -43,7 +52,7 @@ void Source::handleMessage(cMessage *msg) {
 
     cMessage *job = createMessage();
     send(job, "out");
-    double generateDelay = par("generateInterval");
+    double generateDelay = par("generateInterval").doubleValue();
 
-    scheduleAt(simTime() + generateDelay, sendMessageEvent);
+    scheduleAt(simTime() + generateDelay * intervalScaler, sendMessageEvent);
 }

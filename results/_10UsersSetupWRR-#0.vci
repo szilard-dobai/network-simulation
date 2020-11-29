@@ -1,15 +1,15 @@
-file 43012 1605727852                                           
+file 107271 1606662008                                          
 version 2
-run _10UsersSetupWRR-0-20201118-21:30:46-14152
+run _10UsersSetupWRR-0-20201129-17:00:02-25424
 attr configname _10UsersSetupWRR
-attr datetime 20201118-21:30:46
+attr datetime 20201129-17:00:02
 attr experiment _10UsersSetupWRR
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 14152
+attr processid 25424
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -17,28 +17,20 @@ attr runnumber 0
 attr seedset 0
 param **.algorithm "\"wrr\""
 param **.usersCount 10
-param **.channelsCount 500
-param **.scheduler.generateInterval 5s
-param **.user[0].gen.generateInterval 1s
-param **.user[1].gen.generateInterval 2s
-param **.user[2].gen.generateInterval 1s
-param **.user[3].gen.generateInterval 3s
-param **.user[4].gen.generateInterval 1s
-param **.user[5].gen.generateInterval 4s
-param **.user[6].gen.generateInterval 2s
-param **.user[7].gen.generateInterval 2s
-param **.user[8].gen.generateInterval 6s
-param **.user[9].gen.generateInterval 8s
-param **.user[0].radioLinkQuality 5
-param **.user[1].radioLinkQuality 3
-param **.user[2].radioLinkQuality 4
-param **.user[3].radioLinkQuality 8
-param **.user[4].radioLinkQuality 10
-param **.user[5].radioLinkQuality 3
-param **.user[6].radioLinkQuality 4
-param **.user[7].radioLinkQuality 3
-param **.user[8].radioLinkQuality 2
-param **.user[9].radioLinkQuality 7
+param **.channelsCount 25
+param **.networkLoad 0.9
+param **.scheduler.generateInterval 1ms
+param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
+param **.user[0].radioLinkQuality 1
+param **.user[1].radioLinkQuality 2
+param **.user[2].radioLinkQuality 3
+param **.user[3].radioLinkQuality 4
+param **.user[4].radioLinkQuality 5
+param **.user[5].radioLinkQuality 6
+param **.user[6].radioLinkQuality 7
+param **.user[7].radioLinkQuality 8
+param **.user[8].radioLinkQuality 9
+param **.user[9].radioLinkQuality 10
 param **.user[0].gen.startingMessage 0
 param **.user[1].gen.startingMessage 100
 param **.user[2].gen.startingMessage 200
@@ -60,39 +52,43 @@ vector 6 Network.user[6].queue "Queue before scheduler's run." ETV
 vector 7 Network.user[7].queue "Queue before scheduler's run." ETV
 vector 8 Network.user[8].queue "Queue before scheduler's run." ETV
 vector 9 Network.user[9].queue "Queue before scheduler's run." ETV
-vector 10 Network.user[0].queue "Queue after scheduler's run." ETV
-vector 11 Network.user[1].queue "Queue after scheduler's run." ETV
-vector 12 Network.user[2].queue "Queue after scheduler's run." ETV
-vector 13 Network.user[3].queue "Queue after scheduler's run." ETV
-vector 14 Network.user[4].queue "Queue after scheduler's run." ETV
-vector 15 Network.user[5].queue "Queue after scheduler's run." ETV
-vector 16 Network.user[6].queue "Queue after scheduler's run." ETV
-vector 17 Network.user[7].queue "Queue after scheduler's run." ETV
-vector 18 Network.sink lifetime:vector ETV
+vector 10 Network.scheduler "Scheduler free channels" ETV
+vector 11 Network.scheduler "Total users' queues lengths" ETV
+vector 12 Network.user[0].queue "Queue after scheduler's run." ETV
+vector 13 Network.user[1].queue "Queue after scheduler's run." ETV
+vector 14 Network.user[2].queue "Queue after scheduler's run." ETV
+vector 15 Network.user[3].queue "Queue after scheduler's run." ETV
+vector 16 Network.user[4].queue "Queue after scheduler's run." ETV
+vector 17 Network.user[5].queue "Queue after scheduler's run." ETV
+vector 18 Network.user[6].queue "Queue after scheduler's run." ETV
+vector 19 Network.user[7].queue "Queue after scheduler's run." ETV
+vector 20 Network.user[8].queue "Queue after scheduler's run." ETV
+vector 21 Network.user[9].queue "Queue after scheduler's run." ETV
+vector 22 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-vector 19 Network.user[8].queue "Queue after scheduler's run." ETV
-vector 20 Network.user[9].queue "Queue after scheduler's run." ETV
-0	3222 796 45 6537 5 295 59 4 5 294 1466
-1	4018 796 46 6538 5 295 59 2 3 147 381
-2	4814 796 47 6539 5 295 59 4 5 294 1466
-3	5610 796 48 6540 5 295 59 1 2 98 176
-4	6406 796 49 6541 5 295 59 4 5 294 1466
-5	7202 796 50 6542 5 295 59 1 2 73 101
-6	7998 796 51 6543 5 295 59 2 3 147 381
-7	8794 796 52 6544 5 295 59 2 3 147 381
-8	9590 796 53 6545 5 295 59 0 1 49 49
-9	10386 796 54 6546 5 295 59 0 1 36 36
-10	11182 855 68 6566 5 295 59 1 1 59 59
-11	12037 855 69 6567 5 295 59 0 1 29 29
-12	12892 1699 70 6569 5 295 117 1 2 175 291
-13	14591 855 71 6560 5 295 59 0 1 19 19
-14	15446 855 72 6561 5 295 59 1 1 59 59
-15	16301 855 73 6562 5 295 59 0 1 14 14
-16	17156 855 74 6563 5 295 59 0 1 29 29
-17	18011 855 75 6564 5 295 59 0 1 29 29
-18	18866 22907 76 6597 5 295 1579 0 5 4637 16839
-19	41773 713 175 6565 10 295 49 0 0 0 0
-20	42486 524 176 6458 10 290 36 0 0 0 0
+0	3011 1594 42 9900 0.001 0.101 101 2 3 226 524
+1	4605 1594 43 9901 0.001 0.101 101 2 3 225 519
+2	6199 1594 44 9902 0.001 0.101 101 2 3 221 499
+3	7793 1594 45 9903 0.001 0.101 101 2 3 217 479
+4	9387 1594 46 9904 0.001 0.101 101 2 3 224 514
+5	10981 1594 47 9905 0.001 0.101 101 2 3 217 479
+6	12575 1594 48 9906 0.001 0.101 101 2 3 226 524
+7	14169 1594 49 9907 0.001 0.101 101 2 3 217 479
+8	15763 1594 50 9908 0.001 0.101 101 2 3 229 539
+9	17357 1594 51 9909 0.001 0.101 101 2 3 224 514
+10	18951 1695 61 9919 0.001 0.101 101 0 5 299 1081
+11	20646 1695 61 9919 0.001 0.101 101 0 0 0 0
+12	22341 3794 62 9932 0.001 0.101 226 0 2 149 197
+13	26135 2083 63 9930 0.001 0.101 124 0 1 23 23
+14	28218 1695 64 9921 0.001 0.101 101 0 0 0 0
+15	29913 1695 65 9922 0.001 0.101 101 0 0 0 0
+16	31608 1695 66 9923 0.001 0.101 101 0 0 0 0
+17	33303 1695 67 9924 0.001 0.101 101 0 0 0 0
+18	34998 1695 68 9925 0.001 0.101 101 0 0 0 0
+19	36693 1695 69 9926 0.001 0.101 101 0 0 0 0
+20	38388 1695 70 9927 0.001 0.101 101 0 0 0 0
+21	40083 1695 71 9928 0.001 0.101 101 0 0 0 0
+22	41778 65491 73 9957 0.001 0.101 2226 8.572e-008 0.00099961212 1.111999056287 0.0007404478625544
 

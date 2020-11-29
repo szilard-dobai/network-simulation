@@ -1,0 +1,52 @@
+file 86616 1606662694                                           
+version 2
+run _3UsersSetupWRR-0-20201129-17:11:29-24732
+attr configname _3UsersSetupWRR
+attr datetime 20201129-17:11:29
+attr experiment _3UsersSetupWRR
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 24732
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.algorithm "\"wrr\""
+param **.usersCount 3
+param **.channelsCount 30
+param **.networkLoad 1.5
+param **.scheduler.generateInterval 1ms
+param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
+param **.user[0].radioLinkQuality 1
+param **.user[1].radioLinkQuality 2
+param **.user[2].radioLinkQuality 3
+param **.user[0].gen.startingMessage 0
+param **.user[1].gen.startingMessage 100
+param **.user[2].gen.startingMessage 200
+
+vector 0 Network.user[0].queue "Queue before scheduler's run." ETV
+vector 1 Network.user[1].queue "Queue before scheduler's run." ETV
+vector 2 Network.user[2].queue "Queue before scheduler's run." ETV
+vector 3 Network.scheduler "Scheduler free channels" ETV
+vector 4 Network.scheduler "Total users' queues lengths" ETV
+vector 5 Network.user[0].queue "Queue after scheduler's run." ETV
+vector 6 Network.user[1].queue "Queue after scheduler's run." ETV
+vector 7 Network.user[2].queue "Queue after scheduler's run." ETV
+vector 8 Network.sink lifetime:vector ETV
+attr interpolationmode none
+attr title "lifetime of arrived jobs, vector"
+attr unit s
+0	1495 1254 86 9972 0.001 0.071 71 14 696 25205 11779685
+1	2749 1244 87 9973 0.001 0.071 71 14 341 12637 2901445
+2	3993 1192 88 9974 0.001 0.071 71 14 15 1039 15221
+3	5185 1121 91 9977 0.001 0.071 71 0 0 0 0
+4	6306 1258 91 9977 0.001 0.071 71 12 1022 36751 25225821
+5	7564 6497 92 9991 0.001 0.071 368 8 695 129239 60085887
+6	14061 6440 93 9992 0.001 0.071 368 4 339 63273 14267101
+7	20501 5679 94 9990 0.001 0.071 355 0 12 2026 17714
+8	26180 60434 108 10000 0.001 0.071 2108 1.229329e-006 0.046611837656 17.240422935785 0.38612765747971
+

@@ -1,0 +1,38 @@
+version 2
+run _3UsersSetupPF-0-20201129-17:11:08-1552
+attr configname _3UsersSetupPF
+attr datetime 20201129-17:11:08
+attr experiment _3UsersSetupPF
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Network
+attr processid 1552
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.algorithm "\"pf\""
+param **.usersCount 3
+param **.channelsCount 30
+param **.networkLoad 1.5
+param **.scheduler.generateInterval 1ms
+param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
+param **.user[0].radioLinkQuality 1
+param **.user[1].radioLinkQuality 2
+param **.user[2].radioLinkQuality 3
+param **.user[0].gen.startingMessage 0
+param **.user[1].gen.startingMessage 100
+param **.user[2].gen.startingMessage 200
+
+scalar Network.sink lifetime:mean 0.010641066522
+attr interpolationmode none
+attr title "lifetime of arrived jobs, mean"
+attr unit s
+scalar Network.sink lifetime:max 0.037463824547
+attr interpolationmode none
+attr title "lifetime of arrived jobs, max"
+attr unit s
+

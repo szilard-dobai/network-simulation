@@ -171,7 +171,8 @@ int Scheduler::runPFAlgo() {
 int Scheduler::runWRRAlgo() {
     int usersCount = (int) getAncestorPar("usersCount");
     int freeChannels = (int) getAncestorPar("channelsCount"),
-            intendedServedAmount = 0, actualServedAmount = 0, emptyQueues = 0;
+            intendedServedAmount = 0, actualServedAmount = 0, emptyQueues = 0,
+            statisticalSum = 0;
 
     int i = 0, j = 0;
 
@@ -209,6 +210,11 @@ int Scheduler::runWRRAlgo() {
         }
 
     }
+
+    freeChannelsVec.record(freeChannels);
+    for (i = 0; i < usersCount; i++)
+        statisticalSum += queueLength[i];
+    totalQLVec.record(statisticalSum);
 
     return 0;
 }

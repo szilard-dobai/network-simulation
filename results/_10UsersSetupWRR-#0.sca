@@ -1,14 +1,14 @@
 version 2
-run _10UsersSetupWRR-0-20201118-21:30:46-14152
+run _10UsersSetupWRR-0-20201129-17:00:02-25424
 attr configname _10UsersSetupWRR
-attr datetime 20201118-21:30:46
+attr datetime 20201129-17:00:02
 attr experiment _10UsersSetupWRR
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 14152
+attr processid 25424
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -16,28 +16,20 @@ attr runnumber 0
 attr seedset 0
 param **.algorithm "\"wrr\""
 param **.usersCount 10
-param **.channelsCount 500
-param **.scheduler.generateInterval 5s
-param **.user[0].gen.generateInterval 1s
-param **.user[1].gen.generateInterval 2s
-param **.user[2].gen.generateInterval 1s
-param **.user[3].gen.generateInterval 3s
-param **.user[4].gen.generateInterval 1s
-param **.user[5].gen.generateInterval 4s
-param **.user[6].gen.generateInterval 2s
-param **.user[7].gen.generateInterval 2s
-param **.user[8].gen.generateInterval 6s
-param **.user[9].gen.generateInterval 8s
-param **.user[0].radioLinkQuality 5
-param **.user[1].radioLinkQuality 3
-param **.user[2].radioLinkQuality 4
-param **.user[3].radioLinkQuality 8
-param **.user[4].radioLinkQuality 10
-param **.user[5].radioLinkQuality 3
-param **.user[6].radioLinkQuality 4
-param **.user[7].radioLinkQuality 3
-param **.user[8].radioLinkQuality 2
-param **.user[9].radioLinkQuality 7
+param **.channelsCount 25
+param **.networkLoad 0.9
+param **.scheduler.generateInterval 1ms
+param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
+param **.user[0].radioLinkQuality 1
+param **.user[1].radioLinkQuality 2
+param **.user[2].radioLinkQuality 3
+param **.user[3].radioLinkQuality 4
+param **.user[4].radioLinkQuality 5
+param **.user[5].radioLinkQuality 6
+param **.user[6].radioLinkQuality 7
+param **.user[7].radioLinkQuality 8
+param **.user[8].radioLinkQuality 9
+param **.user[9].radioLinkQuality 10
 param **.user[0].gen.startingMessage 0
 param **.user[1].gen.startingMessage 100
 param **.user[2].gen.startingMessage 200
@@ -49,11 +41,11 @@ param **.user[7].gen.startingMessage 700
 param **.user[8].gen.startingMessage 800
 param **.user[9].gen.startingMessage 900
 
-scalar Network.sink lifetime:mean 2.9366687777074
+scalar Network.sink lifetime:mean 0.00049955033975157
 attr interpolationmode none
 attr title "lifetime of arrived jobs, mean"
 attr unit s
-scalar Network.sink lifetime:max 5
+scalar Network.sink lifetime:max 0.00099961212
 attr interpolationmode none
 attr title "lifetime of arrived jobs, max"
 attr unit s

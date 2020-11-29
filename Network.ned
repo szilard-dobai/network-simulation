@@ -3,6 +3,7 @@ network Network
     parameters:
         int usersCount;
         int channelsCount;
+        double networkLoad;
         string algorithm;
         @display("bgb=612,281");
     submodules:
