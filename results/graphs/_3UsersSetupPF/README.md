@@ -6,7 +6,7 @@
 
 Each **user** consists of a **generator** and a **queue**.
   
-For this analysis, we chose the following weights for the users: **w = [1, 2, 3]**.
+For this analysis, we chose the following weights for the users: **w = [1, 2, 4]**.
 
 The scheduler runs every **1ms** and has the task of distributing the **30 channels** between the users. 
 
