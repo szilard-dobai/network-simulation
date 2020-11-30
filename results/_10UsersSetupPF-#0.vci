@@ -1,15 +1,15 @@
-file 106372 1606674182                                          
+file 109144 1606756499                                          
 version 2
-run _10UsersSetupPF-0-20201129-20:22:58-12828
+run _10UsersSetupPF-0-20201130-19:14:53-1288
 attr configname _10UsersSetupPF
-attr datetime 20201129-20:22:58
+attr datetime 20201130-19:14:53
 attr experiment _10UsersSetupPF
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network Network
-attr processid 12828
+attr processid 1288
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -23,14 +23,14 @@ param **.scheduler.generateInterval 1ms
 param **.gen.generateInterval "triang(0.9ms, 1.0ms, 1.1ms)"
 param **.user[0].radioLinkQuality 1
 param **.user[1].radioLinkQuality 2
-param **.user[2].radioLinkQuality 3
-param **.user[3].radioLinkQuality 4
-param **.user[4].radioLinkQuality 5
-param **.user[5].radioLinkQuality 6
-param **.user[6].radioLinkQuality 7
+param **.user[2].radioLinkQuality 4
+param **.user[3].radioLinkQuality 8
+param **.user[4].radioLinkQuality 1
+param **.user[5].radioLinkQuality 2
+param **.user[6].radioLinkQuality 4
 param **.user[7].radioLinkQuality 8
-param **.user[8].radioLinkQuality 9
-param **.user[9].radioLinkQuality 10
+param **.user[8].radioLinkQuality 1
+param **.user[9].radioLinkQuality 2
 param **.user[0].gen.startingMessage 0
 param **.user[1].gen.startingMessage 100
 param **.user[2].gen.startingMessage 200
@@ -54,41 +54,41 @@ vector 8 Network.user[8].queue "Queue before scheduler's run." ETV
 vector 9 Network.user[9].queue "Queue before scheduler's run." ETV
 vector 10 Network.scheduler "Scheduler free channels" ETV
 vector 11 Network.scheduler "Total users' queues lengths" ETV
-vector 12 Network.user[9].queue "Queue after scheduler's run." ETV
-vector 13 Network.user[8].queue "Queue after scheduler's run." ETV
-vector 14 Network.user[7].queue "Queue after scheduler's run." ETV
-vector 15 Network.user[6].queue "Queue after scheduler's run." ETV
-vector 16 Network.user[5].queue "Queue after scheduler's run." ETV
-vector 17 Network.user[4].queue "Queue after scheduler's run." ETV
-vector 18 Network.user[3].queue "Queue after scheduler's run." ETV
-vector 19 Network.user[2].queue "Queue after scheduler's run." ETV
-vector 20 Network.user[1].queue "Queue after scheduler's run." ETV
+vector 12 Network.user[7].queue "Queue after scheduler's run." ETV
+vector 13 Network.user[3].queue "Queue after scheduler's run." ETV
+vector 14 Network.user[6].queue "Queue after scheduler's run." ETV
+vector 15 Network.user[2].queue "Queue after scheduler's run." ETV
+vector 16 Network.user[9].queue "Queue after scheduler's run." ETV
+vector 17 Network.user[5].queue "Queue after scheduler's run." ETV
+vector 18 Network.user[1].queue "Queue after scheduler's run." ETV
+vector 19 Network.user[8].queue "Queue after scheduler's run." ETV
+vector 20 Network.user[4].queue "Queue after scheduler's run." ETV
 vector 21 Network.user[0].queue "Queue after scheduler's run." ETV
 vector 22 Network.sink lifetime:vector ETV
 attr interpolationmode none
 attr title "lifetime of arrived jobs, vector"
 attr unit s
-0	3007 1406 42 9971 0.001 0.089 89 2 3 239 661
-1	4413 1406 43 9972 0.001 0.089 89 2 3 237 651
-2	5819 1406 44 9973 0.001 0.089 89 2 3 234 636
-3	7225 1406 45 9974 0.001 0.089 89 2 3 230 616
-4	8631 1406 46 9975 0.001 0.089 89 2 3 237 651
-5	10037 1406 47 9976 0.001 0.089 89 2 3 229 611
-6	11443 1406 48 9977 0.001 0.089 89 2 3 239 661
-7	12849 1406 49 9978 0.001 0.089 89 2 3 230 616
-8	14255 1406 50 9979 0.001 0.089 89 2 3 242 676
-9	15661 1406 51 9980 0.001 0.089 89 2 3 237 651
-10	17067 1496 61 9990 0.001 0.089 89 0 10 316 1434
-11	18563 1495 61 9990 0.001 0.089 89 0 0 0 0
-12	20058 1495 62 9991 0.001 0.089 89 0 0 0 0
-13	21553 1495 63 9992 0.001 0.089 89 0 0 0 0
-14	23048 1495 64 9993 0.001 0.089 89 0 0 0 0
-15	24543 1495 65 9994 0.001 0.089 89 0 0 0 0
-16	26038 1495 66 9995 0.001 0.089 89 0 0 0 0
-17	27533 1495 67 9996 0.001 0.089 89 0 0 0 0
-18	29028 1495 68 9997 0.001 0.089 89 0 0 0 0
-19	30523 1495 69 9998 0.001 0.089 89 0 0 0 0
-20	32018 2488 70 9999 0.001 0.089 148 0 1 59 59
-21	34506 3983 71 10000 0.001 0.089 237 0 2 210 332
-22	38489 67881 73 9913 0.001 0.088 2326 5.53587e-007 0.000999784361 1.165558402635 0.00077705550689317
+0	3004 1342 42 9906 0.001 0.085 85 2 3 228 630
+1	4346 1342 43 9907 0.001 0.085 85 2 3 227 625
+2	5688 1342 44 9908 0.001 0.085 85 2 3 224 610
+3	7030 1342 45 9909 0.001 0.085 85 2 3 219 585
+4	8372 1342 46 9910 0.001 0.085 85 2 3 227 625
+5	9714 1342 47 9911 0.001 0.085 85 2 3 219 585
+6	11056 1342 48 9912 0.001 0.085 85 2 3 228 630
+7	12398 1342 49 9913 0.001 0.085 85 2 3 219 585
+8	13740 1342 50 9914 0.001 0.085 85 2 3 231 645
+9	15082 1342 51 9915 0.001 0.085 85 2 3 226 620
+10	16424 1428 61 9925 0.001 0.085 85 0 10 302 1374
+11	17852 1427 61 9925 0.001 0.085 85 0 0 0 0
+12	19279 1428 62 9926 0.001 0.085 85 0 0 0 0
+13	20707 1428 63 9927 0.001 0.085 85 0 0 0 0
+14	22135 1428 64 9928 0.001 0.085 85 0 0 0 0
+15	23563 1428 65 9929 0.001 0.085 85 0 0 0 0
+16	24991 2369 66 9936 0.001 0.085 141 0 1 56 56
+17	27360 2253 67 9937 0.001 0.085 134 0 1 49 49
+18	29613 2388 68 9938 0.001 0.085 142 0 1 57 57
+19	32001 3882 69 9942 0.001 0.085 231 0 2 207 329
+20	35883 3816 70 9943 0.001 0.085 227 0 2 199 313
+21	39699 3832 71 9944 0.001 0.085 228 0 2 201 317
+22	43531 65611 75 9972 0.001 0.085 2248 5.53587e-007 0.000999784361 1.126264790651 0.00075097822751745
 

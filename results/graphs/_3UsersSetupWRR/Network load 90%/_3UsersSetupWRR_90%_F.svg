@@ -236,7 +236,7 @@
 <rect x="41" y="40" clip-path="url(#clipPath2)" fill="none" width="1342" stroke-dasharray="none" height="561" stroke="black"/>
 </g>
 <g text-rendering="geometricPrecision" font-size="13" font-family="'Arial'" stroke-linecap="butt">
-<text xml:space="preserve" x="634" y="12" clip-path="url(#clipPath2)" stroke="none">Scheduler free channels</text>
+<text xml:space="preserve" x="634" y="12" clip-path="url(#clipPath2)" stroke="none">Number of free channels</text>
 <line clip-path="url(#clipPath2)" fill="none" x1="41" x2="1383" y1="38" y2="38"/>
 <line clip-path="url(#clipPath2)" fill="none" x1="41" x2="1383" y1="603" y2="603"/>
 <text xml:space="preserve" x="700" y="637" clip-path="url(#clipPath2)" stroke="none">time</text>

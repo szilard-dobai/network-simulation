@@ -180,7 +180,7 @@
 <rect x="54" y="40" clip-path="url(#clipPath2)" fill="none" width="1316" stroke-dasharray="none" height="561" stroke="black"/>
 </g>
 <g text-rendering="geometricPrecision" font-size="13" font-family="'Arial'" stroke-linecap="butt">
-<text xml:space="preserve" x="625" y="12" clip-path="url(#clipPath2)" stroke="none">Total users' queues lengths</text>
+<text xml:space="preserve" x="629" y="12" clip-path="url(#clipPath2)" stroke="none">Total users' queues length</text>
 <line clip-path="url(#clipPath2)" fill="none" x1="54" x2="1370" y1="38" y2="38"/>
 <line clip-path="url(#clipPath2)" fill="none" x1="54" x2="1370" y1="603" y2="603"/>
 <text xml:space="preserve" x="700" y="637" clip-path="url(#clipPath2)" stroke="none">time</text>

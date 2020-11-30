@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
   <inputs>
     <inputs name="/TestProject/results/_3UsersSetupWRR-*.vec"/>
     <inputs name="/TestProject/results/_3UsersSetupWRR-*.sca"/>
   </inputs>
-  <datasets/>
-  <chartSheets/>
+  <datasets>
+    <datasets name="Queues before each scheduling cycle">
+      <items xsi:type="scave:Add" filterPattern="file(/TestProject/results/_3UsersSetupWRR-#0.vec) AND attr:configname(_3UsersSetupWRR) AND attr:runnumber(0) AND module(Network.user[0].queue) AND name(&quot;Queue before scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="file(/TestProject/results/_3UsersSetupWRR-#0.vec) AND attr:configname(_3UsersSetupWRR) AND attr:runnumber(0) AND module(Network.user[1].queue) AND name(&quot;Queue before scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="file(/TestProject/results/_3UsersSetupWRR-#0.vec) AND attr:configname(_3UsersSetupWRR) AND attr:runnumber(0) AND module(Network.user[2].queue) AND name(&quot;Queue before scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="Queues before each scheduling cycle" lineNameFormat="">
+        <properties name="Graph.Title" value="Queues before each scheduling cycle"/>
+        <properties name="X.Axis.Title" value="time"/>
+        <properties name="Y.Axis.Title" value="messages"/>
+        <properties name="Legend.Display" value="true"/>
+      </items>
+    </datasets>
+    <datasets name="Queues after each scheduling cycle">
+      <items xsi:type="scave:Add" filterPattern="module(Network.user[0].queue) AND name(&quot;Queue after scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(Network.user[1].queue) AND name(&quot;Queue after scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:Add" filterPattern="module(Network.user[2].queue) AND name(&quot;Queue after scheduler's run.&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="Queues after each scheduling cycle" lineNameFormat="">
+        <properties name="Graph.Title" value="Queues after each scheduling cycle"/>
+        <properties name="X.Axis.Title" value="time"/>
+        <properties name="Y.Axis.Title" value="messages"/>
+        <properties name="Legend.Display" value="true"/>
+      </items>
+    </datasets>
+    <datasets name="Number of free channels">
+      <items xsi:type="scave:Add" filterPattern="module(Network.scheduler) AND name(&quot;Scheduler free channels&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="Number of free channels" lineNameFormat="">
+        <properties name="Graph.Title" value="Number of free channels"/>
+        <properties name="X.Axis.Title" value="time"/>
+        <properties name="Y.Axis.Title" value="channels"/>
+      </items>
+    </datasets>
+    <datasets name="Total users' queues length">
+      <items xsi:type="scave:Add" filterPattern="module(Network.scheduler) AND name(&quot;Total users' queues lengths&quot;)" type="VECTOR"/>
+      <items xsi:type="scave:LineChart" name="Total users' queues length" lineNameFormat="">
+        <properties name="Graph.Title" value="Total users' queues length"/>
+        <properties name="X.Axis.Title" value="time"/>
+        <properties name="Y.Axis.Title" value="messages"/>
+      </items>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.3"/>
+  </chartSheets>
 </scave:Analysis>
