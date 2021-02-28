@@ -14,3 +14,7 @@ A user consists of a source module (or generator) and a buffer module, implement
 
 We can consider that all data packets have a fixed length.
 
+## Fuzzy Logic Controller Upgrade
+
+Consider a radio system (a cell) where there can be at most K users (eg K = 10). The resource allocation algorithm is of the WRR (Weighted Round Robin) type. We consider that of the K users, some have W_HP (high priority) weight, others W_MP (medium priority), and others W_LP (low priority). For example W_HP = 4, W_MP = 2 and W_LP = 1. The total capacity of the network is B data packets per ms Tc (milliseconds) (eg B = 8 and Tc = 20 at GPRS, or B = 20 and Tc = 1 at LTE). All data packets are considered to have a fixed length equal to 1. Adjust the share of HP users so that the average delay of their packets is not (as far as possible) greater than a given value. Fuzzy inference will be used for this purpose.
+
