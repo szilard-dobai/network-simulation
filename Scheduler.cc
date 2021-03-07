@@ -26,6 +26,7 @@ private:
     int *timeSinceLastServed;
     int responseReceivedCounter = 0;
     int lastUserServed = 0;
+    int flcReady = 0;
     cOutVector freeChannelsVec, totalQLVec;
 
 protected:
@@ -72,20 +73,27 @@ void Scheduler::handleMessage(cMessage *msg) {
         double generateDelay = par("generateInterval");
 
         askForQueueLengths();
+        send(new cMessage("start_flc"), "outFlc");
 
         scheduleAt(simTime() + generateDelay, sendMessageEvent);
     } else {
-        queueLength[msg->getArrivalGate()->getIndex()] = std::stoi(
-                msg->getName());
-        responseReceivedCounter++;
-        if (responseReceivedCounter == (int) getAncestorPar("usersCount")) {
+        if (!strcmp(msg->getName(), "finish_flc")) {
+            flcReady = 1;
+        } else {
+            queueLength[msg->getArrivalGate()->getIndex()] = std::stoi(
+                    msg->getName());
+            responseReceivedCounter++;
+        }
+        if (responseReceivedCounter == (int) getAncestorPar("usersCount")
+                && flcReady == 1) {
             responseReceivedCounter = 0;
 
             for (int counter = 0; counter < (int) getAncestorPar("usersCount");
                     counter++) {
-                radioLinkQuality[counter] =
-                        (int) getParentModule()->getSubmodule("user", counter)->par(
-                                "radioLinkQuality");
+                radioLinkQuality[counter] = getParentModule()->getSubmodule(
+                        "user", counter)->par("radioLinkQuality").intValue();
+                EV << "USER " << counter << " HAS WEIGHT "
+                          << radioLinkQuality[counter] << endl;
             }
 
             if (getAncestorPar("algorithm").stdstringValue().compare(
@@ -93,13 +101,15 @@ void Scheduler::handleMessage(cMessage *msg) {
                 runPFAlgo();
             else
                 runWRRAlgo();
-        }
 
-        for (int counter = 0; counter < (int) getAncestorPar("usersCount");
-                counter++) {
-            getParentModule()->getSubmodule("user", counter)->par(
-                    "radioLinkQuality").setIntValue(
-                    initialRadioLinkQuality[counter]);
+            for (int counter = 0; counter < (int) getAncestorPar("usersCount");
+                    counter++) {
+                getParentModule()->getSubmodule("user", counter)->par(
+                        "radioLinkQuality").setIntValue(
+                        initialRadioLinkQuality[counter]);
+            }
+
+            flcReady = 0;
         }
     }
 }
@@ -220,7 +230,7 @@ int Scheduler::runWRRAlgo() {
             if (actualServedAmount > 0) {
                 send(new cMessage(intToString(actualServedAmount)), "out", i);
                 EV << "USER " << i + 1 << " MAY SEND " << actualServedAmount
-                          << " MESSAGES.\n";
+                          << "   WEIGHT IS   "<< radioLinkQuality[i] << " MESSAGES.\n";
                 freeChannels -= actualServedAmount;
                 queueLength[i] -= actualServedAmount;
             }

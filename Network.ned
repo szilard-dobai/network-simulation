@@ -21,11 +21,7 @@ network Network
         }
         flc: FLC {
             parameters:
-                @display("p=440,257");
-        }
-        gen_flc: GeneratorFLC {
-            parameters:
-                @display("p=150,257");
+                @display("p=150,253;i=block/blackboard");
         }
     connections:
         for i=0..usersCount-1 {
@@ -33,5 +29,6 @@ network Network
             scheduler.in++ <-- user[i].outScheduler;
             user[i].outSink --> sink.in++;
         }
-        gen_flc.out --> flc.in;
+        scheduler.outFlc --> flc.in;
+        scheduler.inFlc <-- flc.out;
 }

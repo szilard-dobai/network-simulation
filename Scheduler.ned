@@ -10,4 +10,6 @@ simple Scheduler
     gates:
         output out[];
         input in[];
+        output outFlc;
+        input inFlc;
 }

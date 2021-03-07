@@ -533,7 +533,7 @@ void FLC::handleMessage(cMessage *msg) {
         for (int counter = 0; counter < hpUsersCount; counter++) {
             int userIndex = hpUsersIndex[counter];
 
-            EV << "Calculez weight pentru userul " << userIndex << endl;
+            EV << "Calculating new weight for user  " << userIndex << endl;
             int wantedQueueLength = 0;
             int currentQueueLength = getParentModule()->getSubmodule("user",
                     userIndex)->par("queueLength").intValue();
@@ -543,12 +543,11 @@ void FLC::handleMessage(cMessage *msg) {
 
             int new_W_HP = W_HP;
             int diff = wantedQueueLength - currentQueueLength;
+            ev << "Diff (normal) = " << diff << "\n";
 
-            ev << " Dif nescalat = " << diff << "\n";
-
-            diff = scale(0, 62, -10, 10, diff);
+            diff = scale(0, 62, -1000, 1000, diff);
             W_HP = scale(0, 62, 0, B, W_HP);
-            ev << " Dif scalat = " << diff << "\n";
+            ev << "Diff (scaled) = " << diff << "\n";
 
             int delta = 0;
             int inp[2] = { diff, W_HP };
@@ -556,8 +555,9 @@ void FLC::handleMessage(cMessage *msg) {
             int result = fuzzy_inference(inp, 2, delta);
             result_dep.record(result);
 
-            int res = round(scale((B * -1) / 2, B / 2, 0, 62, result));
-            EV << " Result = " << result << "\nRes= " << res << "\n";
+            int res = round(scale((B * -1), B, 0, 62, result));
+            EV << "Result (normal) = " << res << "\n";
+            EV << "Result (scaled) = " << result << endl;
 
             new_W_HP = new_W_HP + res;
 
@@ -566,13 +566,18 @@ void FLC::handleMessage(cMessage *msg) {
             if (new_W_HP < 4)
                 new_W_HP = 4;
 
-            EV << "Pondere noua: " << new_W_HP << "\n\n";
+            EV << "New weight = " << new_W_HP << "\n\n";
 
-            getParentModule()->getSubmodule("user", counter)->par(
+            getParentModule()->getSubmodule("user", userIndex)->par(
                     "radioLinkQuality").setIntValue(new_W_HP);
+//            EV << "TESTING THIS SHIT "
+//                      << getParentModule()->getSubmodule("user", userIndex)->par(
+//                              "radioLinkQuality").intValue() << endl;
             hpUserWeight[counter].record(new_W_HP);
-//            delete msg;
+
         }
+        send(new cMessage("finish_flc"), "out");
+//            delete msg;
     }
 }
 
