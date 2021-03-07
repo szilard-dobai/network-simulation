@@ -22,7 +22,7 @@ class Scheduler: public cSimpleModule {
 private:
     cMessage *sendMessageEvent;
     int *queueLength;
-    int *radioLinkQuality;
+    int *radioLinkQuality, *initialRadioLinkQuality;
     int *timeSinceLastServed;
     int responseReceivedCounter = 0;
     int lastUserServed = 0;
@@ -51,11 +51,13 @@ void Scheduler::initialize() {
 
     queueLength = (int*) malloc(sizeof(int) * usersCount);
     radioLinkQuality = (int*) malloc(sizeof(int) * usersCount);
+    initialRadioLinkQuality = (int*) malloc(sizeof(int) * usersCount);
     timeSinceLastServed = (int*) malloc(sizeof(int) * usersCount);
 
     for (int counter = 0; counter < usersCount; counter++) {
-        radioLinkQuality[counter] = (int) getParentModule()->getSubmodule(
-                "user", counter)->par("radioLinkQuality");
+        initialRadioLinkQuality[counter] =
+                (int) getParentModule()->getSubmodule("user", counter)->par(
+                        "radioLinkQuality");
     }
 
     for (int counter = 0; counter < usersCount; counter++) {
@@ -79,11 +81,25 @@ void Scheduler::handleMessage(cMessage *msg) {
         if (responseReceivedCounter == (int) getAncestorPar("usersCount")) {
             responseReceivedCounter = 0;
 
+            for (int counter = 0; counter < (int) getAncestorPar("usersCount");
+                    counter++) {
+                radioLinkQuality[counter] =
+                        (int) getParentModule()->getSubmodule("user", counter)->par(
+                                "radioLinkQuality");
+            }
+
             if (getAncestorPar("algorithm").stdstringValue().compare(
                     std::string("pf")) == 0)
                 runPFAlgo();
             else
                 runWRRAlgo();
+        }
+
+        for (int counter = 0; counter < (int) getAncestorPar("usersCount");
+                counter++) {
+            getParentModule()->getSubmodule("user", counter)->par(
+                    "radioLinkQuality").setIntValue(
+                    initialRadioLinkQuality[counter]);
         }
     }
 }

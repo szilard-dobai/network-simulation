@@ -44,6 +44,7 @@ void Queue::handleMessage(cMessage *msg) {
     if (opp_strcmp(msg->getArrivalGate()->getName(), "inGenerator") == 0) {
         //EV << "Received message: " << msg->getName() << endl;
         queue.insert(msg);
+        getParentModule()->par("queueLength").setIntValue(queue.getLength());
     } else {
         //EV << "RECEIVED MESSAGE FROM scheduler!\n";
         int messageFromScheduler = std::stoi(msg->getName());
