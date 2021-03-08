@@ -1,0 +1,34 @@
+[Config _10UsersSetupWRRFuzzy]
+**.algorithm = "wrr"
+**.usersCount = 10
+**.channelsCount = 20
+**.networkLoad = 0.9
+
+**.user[*].queueLength = 0
+**.user[*].avgWaitTime = 0
+
+**.scheduler.generateInterval = 1ms
+
+**.gen.generateInterval = triang(0.9ms, 1.0ms, 1.1ms)
+
+**.user[0].radioLinkQuality = 4
+**.user[1].radioLinkQuality = 4
+**.user[2].radioLinkQuality = 4
+**.user[3].radioLinkQuality = 4
+**.user[4].radioLinkQuality = 4
+**.user[5].radioLinkQuality = 4
+**.user[6].radioLinkQuality = 4
+**.user[7].radioLinkQuality = 1
+**.user[8].radioLinkQuality = 2
+**.user[9].radioLinkQuality = 1
+
+**.user[0].gen.startingMessage = 0
+**.user[1].gen.startingMessage = 100
+**.user[2].gen.startingMessage = 200
+**.user[3].gen.startingMessage = 300
+**.user[4].gen.startingMessage = 400
+**.user[5].gen.startingMessage = 500
+**.user[6].gen.startingMessage = 600
+**.user[7].gen.startingMessage = 700
+**.user[8].gen.startingMessage = 800
+**.user[9].gen.startingMessage = 900

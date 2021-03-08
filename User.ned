@@ -7,6 +7,7 @@ module User
     parameters:
         int radioLinkQuality;
         int queueLength;
+        double avgWaitTime;
         @display("i=block/user");
     gates:
         input inScheduler;

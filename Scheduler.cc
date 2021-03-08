@@ -102,12 +102,12 @@ void Scheduler::handleMessage(cMessage *msg) {
             else
                 runWRRAlgo();
 
-            for (int counter = 0; counter < (int) getAncestorPar("usersCount");
-                    counter++) {
-                getParentModule()->getSubmodule("user", counter)->par(
-                        "radioLinkQuality").setIntValue(
-                        initialRadioLinkQuality[counter]);
-            }
+//            for (int counter = 0; counter < (int) getAncestorPar("usersCount");
+//                    counter++) {
+//                getParentModule()->getSubmodule("user", counter)->par(
+//                        "radioLinkQuality").setIntValue(
+//                        initialRadioLinkQuality[counter]);
+//            }
 
             flcReady = 0;
         }

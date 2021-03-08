@@ -17,6 +17,8 @@ private:
     simsignal_t lifetimeSignal;
     cOutVector waitTimeVector[100];
     cOutVector hpWaitTimeVector;
+    double waitTimeSum[100];
+    int waitTimeCount[100];
 
 protected:
     virtual void initialize() override;
@@ -42,6 +44,9 @@ void Sink::initialize() {
             vecName += " (HP).";
 
         waitTimeVector[i].setName(vecName.c_str());
+
+        waitTimeSum[i] = 0;
+        waitTimeCount[i] = 0;
     }
 }
 
@@ -52,8 +57,18 @@ void Sink::handleMessage(cMessage *msg) {
               << msg->getSenderModule()->getParentModule()->getIndex() << "]"
               << ", LIFETIME: " << lifetime << "s." << endl;
 
-    waitTimeVector[msg->getSenderModule()->getParentModule()->getIndex()].record(
-            lifetime);
+    int msgSenderUserIndex =
+            msg->getSenderModule()->getParentModule()->getIndex();
+    waitTimeVector[msgSenderUserIndex].record(lifetime);
+    waitTimeSum[msgSenderUserIndex] += lifetime.dbl();
+    waitTimeCount[msgSenderUserIndex] += 1;
+//    getParentModule()->getSubmodule("user", msgSenderUserIndex)->par(
+//            "avgWaitTime").setDoubleValue(
+//            waitTimeSum[msgSenderUserIndex]
+//                    / waitTimeCount[msgSenderUserIndex]);
+    getParentModule()->getSubmodule("user", msgSenderUserIndex)->par(
+            "avgWaitTime").setDoubleValue(lifetime.dbl());
+
     if (msg->getSenderModule()->getParentModule()->par("radioLinkQuality").intValue()
             > 2) {
         hpWaitTimeVector.record(lifetime);

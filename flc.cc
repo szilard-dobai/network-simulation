@@ -534,42 +534,43 @@ void FLC::handleMessage(cMessage *msg) {
             int userIndex = hpUsersIndex[counter];
 
             EV << "Calculating new weight for user  " << userIndex << endl;
-            int wantedQueueLength = 0;
-            int currentQueueLength = getParentModule()->getSubmodule("user",
-                    userIndex)->par("queueLength").intValue();
+            double wantedWaitTime = 0;
+            double currentWaitTime = getParentModule()->getSubmodule("user",
+                    userIndex)->par("avgWaitTime").doubleValue();
             int W_HP = 4;
             int B = (int) getAncestorPar("channelsCount");
-            EV << "Current length = " << currentQueueLength << endl;
+            EV << "Current wait time = " << currentWaitTime << endl;
 
             int new_W_HP = W_HP;
-            int diff = wantedQueueLength - currentQueueLength;
+            double diff = (wantedWaitTime - currentWaitTime) * 10;
             ev << "Diff (normal) = " << diff << "\n";
 
-            diff = scale(0, 62, -1000, 1000, diff);
+            diff = scale(0, 62, -0.5, 0.5, diff);
             W_HP = scale(0, 62, 0, B, W_HP);
             ev << "Diff (scaled) = " << diff << "\n";
 
             int delta = 0;
-            int inp[2] = { diff, W_HP };
+            int inp[2] = { (int) diff, W_HP };
 
             int result = fuzzy_inference(inp, 2, delta);
             result_dep.record(result);
 
-            int res = round(scale((B * -1), B, 0, 62, result));
+            int res = round(scale((B * -1) / 2, B / 2, 0, 62, result));
             EV << "Result (normal) = " << res << "\n";
             EV << "Result (scaled) = " << result << endl;
 
             new_W_HP = new_W_HP + res;
 
             if (new_W_HP > B)
-                new_W_HP = B - 1;
-            if (new_W_HP < 4)
-                new_W_HP = 4;
+                new_W_HP = B;
+            if (new_W_HP < 0)
+                new_W_HP = 0;
 
             EV << "New weight = " << new_W_HP << "\n\n";
 
             getParentModule()->getSubmodule("user", userIndex)->par(
                     "radioLinkQuality").setIntValue(new_W_HP);
+
 //            EV << "TESTING THIS SHIT "
 //                      << getParentModule()->getSubmodule("user", userIndex)->par(
 //                              "radioLinkQuality").intValue() << endl;
